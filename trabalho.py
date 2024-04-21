@@ -55,6 +55,9 @@ print("A assimetria é: ", assimetria)
 
 correlacao_linear = df['salary_in_usd'].corr(df['work_year'])
 print('A correlação linear entre salário em dólares e ano trabalhado:', correlacao_linear)
+# a.   se r = +1, há uma correlação perfeita e positiva entre as variáveis;
+# b.   se r = –1, há uma correlação perfeita e negativa entre as variáveis;
+# c.   se r = 0, ou não há correlação entre as variáveis, ou a relação que porventura exista não é linear.
 # ============================
 # Crie o diagrama de dispersão
 plt.figure(figsize=(10, 6))
