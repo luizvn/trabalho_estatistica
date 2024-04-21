@@ -46,72 +46,33 @@ print("A curtose da coluna é:", curtose)
 
 desvio_padrao = df['salary_in_usd'].std()
 print("O desvio padrão da coluna é:", desvio_padrao)
+
+amplitude_total = df['salary_in_usd'].max() - df['salary_in_usd'].min()
+print("A amplitude total é:", amplitude_total)
+
+assimetria = df['salary_in_usd'].skew()
+print("A assimetria é: ", assimetria)
+
+correlacao_linear = df['salary_in_usd'].corr(df['work_year'])
+print('A correlação linear entre salário em dólares e ano trabalhado:', correlacao_linear)
 # ============================
-
-# ======= GRÁFICO POLAR =======
-# Extrair ângulos e valores do DataFrame:
-angulos = dados['salary_in_usd'].values
-valores = dados['experience_level'].values
-
-# Criar um gráfico polar:
-plt.figure(figsize=(8, 8))
-ax = plt.subplot(111, polar=True)
-
-# Converter ângulos para graus
-angulos_graus = np.degrees(angulos)
-
-# Plotar os pontos no gráfico polar
-ax.plot(angulos, valores)
-
-# Personalizar o gráfico
-ax.set_theta_zero_location('N')
-ax.set_theta_direction(-1)
-plt.title('Gráfico Polar')
+# Crie o diagrama de dispersão
+plt.figure(figsize=(10, 6))
+plt.scatter(df['work_year'], df['salary_in_usd'], alpha=0.5)
+plt.title('Diagrama de Dispersão: Salário x Ano Trabalhado')
+plt.xlabel('Ano Trabalhado')
+plt.ylabel('Salário')
+plt.grid(True)
 plt.show()
+
+
 # =============================
 
-# ======= CARTOGRAMA =======
-# Preparar os dados
-# Suponha que seu arquivo CSV tenha colunas 'Região' e 'Variável'
-# Substitua 'Região' pelo nome da coluna que contém as informações geográficas e
-# 'Variável' pelo nome da coluna que contém a variável a ser representada no cartograma
-regioes = dados['salary_in_usd']
-variavel = dados['experience_level']
 
-# Redimensionar as regiões de acordo com a variável
-# Aqui você pode aplicar diferentes técnicas de redimensionamento dependendo do tipo de cartograma que deseja criar
-
-# Plotar o cartograma
-plt.figure(figsize=(10, 6))
-plt.bar(regioes, variavel)  # Este é um exemplo simples, você pode personalizar o tipo de gráfico de acordo com sua necessidade
-plt.xlabel('salary_in_usd')
-plt.ylabel('experience_level')
-plt.title('Cartograma')
-plt.xticks(rotation=45)  # Rotacionar os rótulos no eixo x para facilitar a leitura
-plt.tight_layout()
-plt.show()
 
 # ==========================
 
-# ======= PICTOGRAMA =======
-# Extrair categorias e contagens do DataFrame
-categorias = dados['experience_level']
-contagens = dados['salary_in_usd']
 
-# Plotar o pictograma
-plt.figure(figsize=(8, 6))
-
-# Loop através das categorias e plotar o número correspondente de símbolos
-for i, categoria in enumerate(categorias):
-    plt.scatter(i, 0, s=contagens[i]*100, label=categoria, alpha=0.5)  # Ajuste o tamanho do símbolo conforme a contagem
-
-plt.xticks(range(len(categorias)), categorias)  # Rotular os eixos x com as categorias
-plt.xlabel('Experiencia')
-plt.ylabel('Salario')
-plt.title('Pictograma')
-plt.legend()
-plt.tight_layout()
-plt.show()
 # ==========================
 
 # ESTATÍSTICAS:
