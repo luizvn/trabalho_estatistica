@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import statsmodels.api as sm
 
 # ======= LENDO O ARQUIVO =======
 dados = pd.read_csv("salaries.csv")
@@ -58,6 +59,30 @@ print('A correlação linear entre salário em dólares e ano trabalhado:', corr
 # a.   se r = +1, há uma correlação perfeita e positiva entre as variáveis;
 # b.   se r = –1, há uma correlação perfeita e negativa entre as variáveis;
 # c.   se r = 0, ou não há correlação entre as variáveis, ou a relação que porventura exista não é linear.
+
+# Definindo a constante de X
+df['constante'] = 1
+# Defina as variáveis independentes (X) e dependentes (y)
+X = df[['constante', 'work_year']]
+y = df['salary_in_usd']
+
+# Ajuste o modelo de regressão linear
+modelo = sm.OLS(y, X).fit()
+
+# Imprima os resultados da regressão
+print(modelo.summary())
+
+# Extrapolando para um novo valor de work_year (2025)
+novo_work_year_extrap = 2025  # Valor fora do intervalo original dos dados
+novo_X_extrap = [1, novo_work_year_extrap]  # Novo ponto para extrapolação
+salario_extrap = modelo.predict(novo_X_extrap)[0]
+print(f"Salário estimado para work_year={novo_work_year_extrap}: ${salario_extrap:.2f}")
+
+# Interpolando para um novo valor de work_year (2022.5)
+novo_work_year_interp = 2022.5  # Valor dentro do intervalo original dos dados
+novo_X_interp = [1, novo_work_year_interp]  # Novo ponto para interpolação
+salario_interp = modelo.predict(novo_X_interp)[0]
+print(f"Salário estimado para work_year={novo_work_year_interp}: ${salario_interp:.2f}")
 # ============================
 # Crie o diagrama de dispersão
 plt.figure(figsize=(10, 6))
