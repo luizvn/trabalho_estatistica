@@ -33,7 +33,7 @@ plt.show()
 
 # =======     MÉDIA    =======
 media = df['salary_in_usd'].mean()
-print("A média de salário em dólares é: ")
+print("A média de salário em dólares é: ", media)
 
 # =======     MODA     =======
 moda = df['salary_in_usd'].mode().values[0]
