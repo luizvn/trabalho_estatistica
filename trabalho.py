@@ -31,37 +31,41 @@ plt.show()
 
 # ======= ESTATÍSTICAS =======
 
+# =======     MÉDIA    =======
+media = df['salary_in_usd'].mean()
+print("A média de salário em dólares é: ")
+
 # =======     MODA     =======
 moda = df['salary_in_usd'].mode().values[0]
-print("A moda da coluna é:", moda)
+print("A moda de salário em dólares é: ", moda)
 
 # =======    MEDIANA   =======
 mediana = df['salary_in_usd'].median()
-print("A mediana da coluna é:", mediana)
+print("A mediana de salário em dólares é: ", mediana)
 
 # =======     VARIÂNCIA     =======
 variancia = df['salary_in_usd'].var()
-print("A variância da coluna é:", variancia)
+print("A variância de salário em dólares é: ", variancia)
 
 # =======     QUARTIS     =======
 quartis = df['salary_in_usd'].quantile([0.25, 0.5, 0.75]).values
-print("Quartis da coluna são:", quartis)
+print("Os quartis de salário em dólares são: ", quartis)
 
 # =======     CURTOSE     =======
 curtose = df['salary_in_usd'].kurtosis()
-print("A curtose da coluna é:", curtose)
+print("A curtose de salário em dólares é: ", curtose)
 
 # =======  DESVIO PADRÃO  =======
 desvio_padrao = df['salary_in_usd'].std()
-print("O desvio padrão da coluna é:", desvio_padrao)
+print("O desvio padrão de salário em dólares é: ", desvio_padrao)
 
 # =======  AMPLITUDE TOTAL  =======
 amplitude_total = df['salary_in_usd'].max() - df['salary_in_usd'].min()
-print("A amplitude total é:", amplitude_total)
+print("A amplitude total de salário em dólares é: ", amplitude_total)
 
 # =======    ASSIMETRIA    =======
 assimetria = df['salary_in_usd'].skew()
-print("A assimetria é: ", assimetria)
+print("A assimetria de salário em dólares é: ", assimetria)
 
 # =======   CORRELAÇÃO LINEAR   =======
 correlacao_linear = df['salary_in_usd'].corr(df['work_year'])
